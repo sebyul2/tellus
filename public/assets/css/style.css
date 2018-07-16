@@ -1,0 +1,434 @@
+
+.timeline-body h6
+{
+    color:#4285f4;
+    font-size: 16px;
+    font-weight: 900;
+    
+}
+
+
+@media (min-width: 576px) {
+    .top-minus-100 {
+        top: 0px;
+    }
+    .top-minus-200 {
+        top: 0px;
+    }
+    .top-minus-300 {
+        top: 0px;
+    }
+}
+
+@media (min-width: 768px) {
+    .top-minus-100 {
+        top: -100px;
+    }
+    .top-minus-200 {
+        top: -200px;
+    }
+    .top-minus-300 {
+        top: -300px;
+    }
+    .timeline-height {
+        height: 500px;
+    }
+}
+
+@media (min-width: 992px) {
+    .top-minus-100 {
+        top: -100px;
+    }
+    .top-minus-200 {
+        top: -200px;
+    }
+    .top-minus-300 {
+        top: -300px;
+    }
+    .timeline-height {
+        height: 500px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .top-minus-100 {
+        top: -100px;
+    }
+    .top-minus-200 {
+        top: -200px;
+    }
+    .top-minus-300 {
+        top: -300px;
+    }
+    .timeline-height {
+        height: 500px;
+    }
+}
+
+/* stock */
+#daily-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#daily th {
+    font-size: 13px;
+}
+
+#daily td {
+    font-size: 12px;
+}
+
+table.dataTable a:link {
+    text-decoration: none;
+    color: #788487;
+}
+
+table.dataTable a:visited {
+    text-decoration: none;
+    color: #788487;
+}
+
+table.dataTable a:active {
+    text-decoration: none;
+    color: #788487;
+}
+
+table.dataTable a:hover {
+    text-decoration: underline;
+    color: #788487;
+}
+
+.ir-info {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    border-top: 2px solid #212325;
+    border-bottom: 2px solid #e7e7e7e8;
+}
+
+#stock-label {
+    margin-bottom: 0;
+}
+
+#stock-label span {
+    color: #a1a1a1b7;
+}
+
+#stock-info {
+    height: 80px;
+}
+
+.end-price {
+    line-height: 1.5;
+    font-size: calc(13pt + 3.5vw);
+    padding-top: 10px;
+}
+
+.end-price-inner {
+    height: 34px;
+    border-left: 1px solid #e7e7e7e8;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.end-price-ifo-debi {
+    font-weight: bold;
+    font-size: 9pt;
+    padding-left: 10px;
+}
+
+.end-price-ifo-dr {
+    font-weight: bold;
+    font-size: 9pt;
+    padding-left: 10px;
+}
+
+.icon-debi-down {
+    position: absolute;
+    background-image: url(/assets/images/sp_locojoy.png);
+    background-position: 0 -15px;
+    background-repeat: no-repeat;
+    top: 8px;
+    left: 65px;
+    width: 11px;
+    height: 9px;
+    content: '';
+}
+
+.icon-debi-up {
+    position: absolute;
+    background-image: url(/assets/images/sp_locojoy.png);
+    background-position: -13px -15px;
+    background-repeat: no-repeat;
+    top: 8px;
+    left: 65px;
+    width: 11px;
+    height: 9px;
+    content: '';
+}
+
+.icon-debi-equal {
+    display: none;
+}
+
+@media (max-width: 575px) {
+    #stock-table thead th {
+        font-size: .7rem;
+        padding: 5px 4px;
+    }
+    #stock-table tbody td {
+        font-size: .7rem;
+        padding: 5px 4px;
+    }
+}
+
+@media (min-width: 576px) {
+    .end-price {
+        line-height: 1;
+        font-size: 40pt;
+        padding-top: 10px;
+    }
+
+    .end-price-inner {
+        height: 46px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+    }
+
+    .end-price-ifo-debi {
+        font-size: 10pt;
+        padding-left: 20px;
+    }
+
+    .end-price-ifo-dr {
+        font-size: 10pt;
+        padding-left: 20px;
+    }
+    
+    .icon-debi-down {
+        top: 8px;
+        left: 85px;
+    }
+
+    .icon-debi-up {
+        top: 8px;
+        left: 85px;
+    }
+    
+    .icon-debi-equal {
+        top: 8px;
+        left: 85px;
+    }
+
+    .text-dr-down {
+        padding-left: 30px;
+    }
+
+    .text-dr-up {
+        padding-left: 30px;
+    }
+
+    .text-dr-equal {
+        padding-left: 30px;
+    }
+}
+
+.debi {
+    position: relative;
+    padding-right: 15px;
+    font-weight: bold;
+}
+
+.up {
+    color: #ef1b4d;
+}
+
+.up::after {
+    position: absolute;
+    background-image: url(/assets/images/sp_locojoy.png);
+    background-position: -13px -15px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    top: 4px;
+    right: 0;
+    width: 11px;
+    height: 9px;
+    content: '';
+}
+
+.down {
+    color: #336ff3;
+}
+
+.down::after {
+    position: absolute;
+    background-image: url(/assets/images/sp_locojoy.png);
+    background-position: 0 -15px;
+    background-repeat: no-repeat;
+    top: 5px;
+    right: 0;
+    width: 11px;
+    height: 9px;
+    content: '';
+}
+
+.icon-end-price-down {
+    position: absolute;
+    background-image: url(/assets/images/sp_locojoy.png);
+    background-position: -19px 0px;
+    background-repeat: no-repeat;
+    top: 20px;
+    left: 15px;
+    width: 16px;
+    height: 15px;
+    content: '';
+}
+
+.icon-end-price-up {
+    position: absolute;
+    background-image: url(/assets/images/sp_locojoy.png);
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    top: 20px;
+    left: 15px;
+    width: 16px;
+    height: 15px;
+    content: '';
+}
+
+.text-end-price-down {
+    padding-left: 35px;
+    color: #336ff3;
+}
+
+.text-end-price-up {
+    padding-left: 35px;
+    color: #ef1b4d;
+}
+
+.text-end-price-equal {
+    padding-left: 15px;
+}
+
+.text-debi-down {
+    padding-left: 30px;
+    color: #336ff3;
+}
+
+.text-debi-up {
+    padding-left: 30px;
+    color: #ef1b4d;
+}
+
+.text-debi-equal {
+    padding-left: 30px;
+}
+
+.text-dr-down {
+    padding-left: 20px;
+    color: #336ff3;
+}
+
+.text-dr-up {
+    padding-left: 20px;
+    color: #ef1b4d;
+}
+
+.text-dr-equal {
+    padding-left: 20px;
+}
+
+.text-dr-down::after {
+    content: '%'
+}
+
+.text-dr-up::after {
+    content: '%'
+}
+
+.text-dr-equal::after {
+    content: '%'
+}
+
+.equal {
+    color: #121213;
+}
+
+.equal::after {
+    position: absolute;
+    background-image: url(/assets/images/sp_locojoy.png);
+    background-position: -26px -15px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    top: 4px;
+    right: 0;
+    width: 11px;
+    height: 9px;
+    content: '';
+}
+
+#query-time {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 9pt;
+    color: #788487;
+}
+
+#stock-table {
+    border-top: 2px solid #000000;
+    border-bottom: 1px solid #e7e7e7e8;
+}
+
+#stock-table thead th,
+#stock-table thead td,
+#stock-table thead td {
+    border-bottom: 0;
+}
+
+.col-md-12 #stock-table {
+    margin-bottom: 20px;
+}
+
+.col-md-12 #daily,
+.col-lg-12 #daily,
+.col-xl-12 #daily,
+    {
+    display: block;
+}
+
+.material-icons.md-12 { font-size: 12pt }
+.material-icons.md-18 { font-size: 18pt }
+.material-icons.md-24 { font-size: 24pt }
+.material-icons.md-30 { font-size: 30pt }
+.material-icons.md-36 { font-size: 36pt }
+.material-icons.md-42 { font-size: 42pt }
+.material-icons.md-48 { font-size: 48pt }
+
+.header.header-transparent .main-logo::after {
+    content: url('../images/logo_s_invert.png');
+}
+
+.header.header-transparent.header-small.header-shadow .main-logo::after {
+    content: url('../images/logo_s.png');
+}
+
+.header .main-logo::after {
+    content: url('../images/logo_s_invert.png');
+}
+
+.header.header-small.header-shadow .main-logo::after {
+    content: url('../images/logo_s.png');
+}
+
+.module.parallax #jarallax-container-1 > div,
+.module.parallax #jarallax-container-2 > div,
+.module.parallax #jarallax-container-3 > div,
+.module.parallax #jarallax-container-4 > div,
+.module.parallax #jarallax-container-5 > div {
+    transition:transform 10ms linear;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ●Head-->
+
+    <head class="head"></head>
+    <!-- ●Head end-->
+</head>
+
+<body>
+    
+    <!-- Preloader-->
+    <div class="page-loader">
+        <div class="page-loader-inner">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader end-->
+
+    <!-- ●Header -->
+    <header class="header header-transparent"></header>
+    <!-- ●Header end -->
+
+    <!-- Wrapper-->
+    <div class="wrapper">
+
+        <!-- Header Title -->
+        <section class="module-page-title parallax text-center" data-background="assets/images/module-8.jpg" data-overlay="0.5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Stock information</strong></h1>
+                        <p class="m-b-40">텔루스의 IR 정보 입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Header Title End-->
+
+        <!-- DataTable -->
+        <section>
+            <!-- info -->
+            <div class="container">
+                <div class="row" style="margin-top:40px; margin-bottom:20px; margin-left:1px">
+                    <H1>주가정보</H1>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 text-center">
+                        <!-- ir -->
+                        <div class="ir-info text-left">
+                            <h3 id="stock-label"></h3>
+                            <div id="stock-info" class="row">
+                                <div class="end-price col-xl-7 col-lg-6 col-md-7 col-sm-6 col-4 text-left">
+                                    <div class="row">
+                                        <span id="price-icon" class="icon-end-price-up"></span>
+                                        <span id="cur-price" class="text-end-price-up"></span>
+                                    </div>
+                                </div>
+                                <div class="end-price-info col-xl-5 col-lg-6 col-md-5 col-sm-6 col-8 text-left">
+                                    <div class="end-price-inner col-lg-12 col-md-12 text-left">
+                                        <div class="end-price-ifo-debi row">
+                                            <span>전일대비</span>
+                                            <span id="icon-debi" class="icon-debi-up"></span>
+                                            <span id="text-debi" class="text-debi-up"></span>
+                                        </div>
+                                        <div class="end-price-ifo-dr row">
+                                            <span>등락률</span>
+                                            <span id="text-dr" class="text-dr-down"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="query-time" class="text-right">
+                        </div>
+                        <table id="stock-table" class="ui celled table" style="width:100%"></table>
+                        <!-- ir -->
+                    </div>
+                    <div class="col-lg-7 col-md-12 text-center">
+                        <!-- chart -->
+                        <div id="stockChartWrapper" style="display: block;">
+                            <canvas id="stockChart" height="140"></canvas>
+                        </div>
+                        <!-- chart End -->
+                    </div>
+                </div>
+            </div>
+            <!-- info End -->
+
+            <div class="container">
+                <div class="row">
+                    <div id="daily-wrapper">
+                        <div class="col-lg-12 col-md-12 d-none d-md-block m-auto text-center">
+                            <table id="daily" class="ui celled table" style="width:100%">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+    <!-- DataTable End -->
+
+    <!-- ●Footer-->
+    <footer class="footer"></footer>
+    <!-- ●Footer end-->
+    </div>
+    <!-- Wrapper end-->
+
+    <!-- ●Slide Bar -->
+    <sidebar class="off-canvas-sidebar"></sidebar>
+    <!-- ●Slide Bar End -->
+
+    <!-- To top button--><a class="scroll-top" href="#top"><i class="fas fa-angle-up"></i></a>
+
+    <!-- Scripts-->
+    <script src="assets/js/custom/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/custom/popper.min.js"></script>
+    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA0rANX07hh6ASNKdBr4mZH0KZSqbHYc3Q"></script>
+    <script src="assets/js/custom/plugins.min.js"></script>
+    <script src="assets/js/custom/custom.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="assets/js/stock.js"></script>
+
+</body>
+
+</html>
