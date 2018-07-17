@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "node ",
+    "build": "npm run db && node script",
+    "db": "docker run -d --name mongodb-tellus -p 27017:27017 -e MONGODB_USERNAME=admin -e MONGODB_PASSWORD=password -e MONGODB_DBNAME=tellus mongo:latest",
+    "db-script": "node script"
   },
   "description": "ExpressApp2",
   "author": {
@@ -13,15 +16,19 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.15.0",
     "cheerio": "^1.0.0-rc.2",
+    "config": "^1.30.0",
     "cookie-parser": "^1.4.0",
     "cors": "^2.8.4",
     "debug": "^2.2.0",
     "express": "^4.14.0",
     "express-async-wrap": "^1.0.0",
+    "js-yaml": "^3.12.0",
     "jsonwebtoken": "^8.3.0",
     "moment": "^2.22.2",
     "mongoose": "^5.2.3",
+    "mongoose-timestamp": "^0.6.0",
     "morgan": "^1.7.0",
+    "pm2": "^3.0.0",
     "pug": "^2.0.0-beta6",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",

@@ -7,8 +7,8 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const bluebird = require('bluebird')
 const cors = require('cors')
-const wrap = require('express-async-wrap')
 const routes = require('./routes')
+const db = require('./connect-db')
 global.Promise = bluebird
 
 const app = express();
@@ -27,6 +27,13 @@ app.use((req, res, next) => { // 404 처리 부분
 });
 
 app.set('port', process.env.PORT || 80);
-const server = app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + server.address().port)
-});
+
+// const server = app.listen(app.get('port'), function() {
+//   console.log('Express server listening on port ' + server.address().port)
+// });
+
+db.connect().then(() => {
+  const server = app.listen(app.get('port'), () => {
+    console.log('Express server listening on port ' + server.address().port)
+  })
+})

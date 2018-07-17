@@ -1,0 +1,5 @@
+app:
+  port: 8080
+  
+db:
+  host: 'mongodb://localhost:27017/tellus'
