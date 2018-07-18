@@ -29,10 +29,13 @@ $(document).ready(function() {
           res.data.stockprice.TBL_StockInfo[0]['$'].StartJuka,
           res.data.stockprice.TBL_StockInfo[0]['$'].HighJuka,
           res.data.stockprice.TBL_StockInfo[0]['$'].LowJuka,
-          res.data.stockprice.TBL_StockInfo[0]['$'].Amount
+          res.data.stockprice.TBL_StockInfo[0]['$'].Volume,
+          Math.round(parseInt(res.data.stockprice.TBL_StockInfo[0]['$'].Amount.replace(/,/gi, '')) 
+          * parseInt(res.data.stockprice.TBL_StockInfo[0]['$'].CurJuka.replace(/,/gi, '')) / 100000000) + '억'
+          // 억단위로 나누기
         ]
       ]
-      // console.log(res.data)
+      console.log(res.data)
       // console.log(dataSet.dailyEndPrice)
       // console.log(dataSet.dayDate)
 
@@ -66,7 +69,7 @@ $(document).ready(function() {
 
       }
       $('#text-debi').text(dataSet.stockInfo.Debi)
-      $('#text-dr').text(dataSet.stockInfo.DungRak ? (parseInt(dataSet.stockInfo.Debi) / parseInt(dataSet.stockInfo.CurJuka.replace(/,/gi, '')) * 100).toFixed(2) : 0)
+      $('#text-dr').text(dataSet.stockInfo.DungRak ? (parseInt(dataSet.stockInfo.Debi) / parseInt(dataSet.stockInfo.PrevJuka.replace(/,/gi, '')) * 100).toFixed(2) : 0)
       $('#query-time').text(dataSet.queryTime + ' 기준')
 
       // stock 테이블
@@ -87,6 +90,9 @@ $(document).ready(function() {
           },
           {
             title: "거래량"
+          },
+          {
+            title: "시가총액"
           }
         ]
       })
@@ -151,11 +157,6 @@ $(document).ready(function() {
             data: "day_Low",
             title: "저가",
             width: "12%"
-          },
-          {
-            data: "day_Volume",
-            title: "시가총액(백만)",
-            width: "15%"
           },
         ]
       })
