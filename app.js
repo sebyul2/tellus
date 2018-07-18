@@ -28,10 +28,6 @@ app.use((req, res, next) => { // 404 처리 부분
 
 app.set('port', process.env.PORT || 80);
 
-// const server = app.listen(app.get('port'), function() {
-//   console.log('Express server listening on port ' + server.address().port)
-// });
-
 db.connect().then(() => {
   const server = app.listen(app.get('port'), () => {
     console.log('Express server listening on port ' + server.address().port)

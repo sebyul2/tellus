@@ -35,10 +35,12 @@ admin.post('/login', (req, res) => {
   res.json(resData)
 })
 
+// 로그인 페이지 호출
 admin.get('/login', wrap(async (req, res) => {
   res.send(await util.injectionTemplate('admin/login.html'))
 }))
 
+// 로그아웃
 admin.get('/logout', wrap(async (req, res) => {
   const token = req.cookies['x-access-token']
   res.cookie('x-access-token', token, {
@@ -48,8 +50,7 @@ admin.get('/logout', wrap(async (req, res) => {
   res.send(await util.injectionTemplate('admin/login.html'))
 }))
 
-
-
+// admin main
 admin.get('/', wrap(async (req, res) => {
   res.send(await util.injectionTemplate('admin/index.html'))
 }))
