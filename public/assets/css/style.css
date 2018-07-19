@@ -464,7 +464,7 @@ table.dataTable a:hover {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 1200px;
-    height: 700px;
+    min-height: 700px;
 }
 
 .popup-header {
@@ -487,4 +487,41 @@ table.dataTable a:hover {
     font-size: 10pt;
     margin: 50px 10px 50px 50px;
     background-color: #ffffff;
+}
+
+.popup-editor-title {
+    font-size: 12pt;
+    padding: 3px;
+    width: 1176px;
+}
+
+.popup-editor-header {
+    font-weight: bold;
+    margin: 15px 10px;
+    text-align: center;
+}
+
+.popup-editor-body {
+    font-size: 10pt;
+    margin: 10px;
+    background-color: #ffffff;
+}
+
+.popup-editor-footer {
+    text-align: center;
+}
+
+.popup-editor-footer .btn {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.btn-xs {
+    padding: 0.3rem 0.4rem;
+}
+
+.ck-editor__editable {
+    height: 530px;
+    overflow-y: scroll;
 }
