@@ -491,6 +491,7 @@ table.dataTable a:hover {
 
 .popup-button, .popup-button:active {
     border:0;
+    background-color: #ffffff;
 }
 
 .popup-button:hover {
