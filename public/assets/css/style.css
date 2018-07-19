@@ -315,7 +315,7 @@ table.dataTable a:hover {
     padding-left: 15px;
 }
 
-.text-debi-down {
+.text-debi-down {4
     padding-left: 30px;
     color: #336ff3;
 }
@@ -464,7 +464,7 @@ table.dataTable a:hover {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 1200px;
-    height: 700px;
+    min-height: 700px;
 }
 
 .popup-header {
@@ -487,4 +487,12 @@ table.dataTable a:hover {
     font-size: 10pt;
     margin: 50px 10px 50px 50px;
     background-color: #ffffff;
+}
+
+.popup-button, .popup-button:active {
+    border:0;
+}
+
+.popup-button:hover {
+    cursor: pointer;
 }
