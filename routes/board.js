@@ -4,7 +4,7 @@ const moment = require('moment');
 const wrap = require('express-async-wrap');
 
 const router = express.Router();
-mongo.connect("mongodb://localhost:27017/tellus");
+// mongo.connect("mongodb://localhost:27017/tellus");
 
 // mongo.model("board", new mongo.Schema({},{collation:"board"})); //콜렉션을 스키마 내부에 옵션으로 지정
 var boardModel = mongo.model("board",new mongo.Schema({

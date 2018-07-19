@@ -93,13 +93,13 @@
                 },
                 columns: [{
                         title: "시간",
-                        width: "15%"
+                        width: "10%"
                     },
                     {
                         title: "공시제목",
-                        width: "65%",
+                        width: "70%",
                         fnCreatedCell: function(nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html("<a href='http://dart.fss.or.kr/dsaf001/main.do?rcpNo=" + oData[3] + "' target='_blank'>" + sData + "</a>")
+                            $(nTd).html("<a href='http://kind.krx.co.kr/common/disclsviewer.do?method=search&acptno=" + oData[3] + "' target='_blank'>" + sData + "</a>")
                         }
                     },
                     {
