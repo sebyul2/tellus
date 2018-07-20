@@ -5,13 +5,26 @@ const path = require('path')
 const jwt = require('jsonwebtoken')
 const wrap = require('express-async-wrap')
 const fs = require('fs')
+const multer = require('multer')
+const moment = require('moment')
 const config = require('../../config')
 const util = require('../../common/util')
+const boardModel = require('../../model/board-model')
 const admin = express.Router()
 
 admin.use(auth)
 
 const publicDir = path.resolve(__dirname, '../../public')
+// 업로드
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cb) => cb(null, 'public/uploads/'),
+    filename: (req, file, cb) => cb(null, new Date().valueOf() + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+  })
+})
+admin.put('/upload', upload.single('file'), (req, res) => {
+  res.json(req.file)
+})
 
 // 관리자 로그인
 admin.post('/login', (req, res) => {
@@ -22,7 +35,7 @@ admin.post('/login', (req, res) => {
     success: false,
     data: {}
   }
-  
+
   if (userId === 'admin' && password === 'tellus') {
     resData.success = true
     const token = getToken(userId)
@@ -56,7 +69,9 @@ admin.get('/', wrap(async (req, res) => {
 }))
 
 function getToken(userId) {
-  const token = jwt.sign({ id: userId }, config.secret)
+  const token = jwt.sign({
+    id: userId
+  }, config.secret)
   return token
 }
 
@@ -66,11 +81,71 @@ function auth(req, res, next) {
 
   const token = req.cookies['x-access-token']
   if (typeof token !== 'undefined') {
-    const decoded = jwt.verify(token, config.secret)  
+    const decoded = jwt.verify(token, config.secret)
     next()
   } else {
     res.redirect('/admin/login')
   }
 }
+
+// 게시물 등록
+admin.post('/board', wrap(async (req, res) => {
+  console.log('req.body', req.body)
+  const userId = 'admin'
+  const name = 'Tellus'
+  const data = {
+    user_id: userId,
+    user_name: name,
+    title: req.body.title,
+    text: req.body.content
+  }
+  if (req.body.rowId) {
+    await boardModel.findOneAndUpdate({
+      sequence: req.body.rowId
+    }, data, {
+      upsert: true,
+      new: true
+    })
+  } else {
+    await boardModel.create(data)
+  }
+  res.json({
+    success: true
+  })
+}))
+
+// 게시물 가져오기
+admin.get('/board', wrap(async (req, res) => {
+  try {
+    const r = await boardModel.find().sort({
+      sequence: -1
+    })
+    const array = r.map(item => {
+      const row = []
+      const date = new Date(item.created_at)
+      row.push(item.sequence)
+      row.push(item.title)
+      row.push(item.user_name)
+      row.push(moment(date).format('YY-MM-DD'))
+      row.push(item.text)
+      row.push(item.type)
+      return row
+    })
+    res.json(array)
+  } catch (err) {
+    throw new Error(err)
+  }
+}))
+
+// 게시물 삭제
+admin.post('/board/delete', wrap(async (req, res) => {
+  try {
+    console.log(req.params)
+    await boardModel.remove({ sequence: req.body.sequence })
+    res.json({success: true})
+  } catch (err) {
+    throw new Error(err)
+  }
+}))
 
 module.exports = admin

@@ -464,7 +464,7 @@ table.dataTable a:hover {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 1200px;
-    min-height: 700px;
+    min-height: 720px;
 }
 
 .popup-header {
@@ -492,7 +492,7 @@ table.dataTable a:hover {
 .popup-editor-title {
     font-size: 12pt;
     padding: 3px;
-    width: 1176px;
+    width: 1180px;
 }
 
 .popup-editor-header {
@@ -522,6 +522,10 @@ table.dataTable a:hover {
 }
 
 .ck-editor__editable {
-    height: 530px;
+    height: 500px;
     overflow-y: scroll;
+}
+
+.ck-balloon-panel_visible {
+    z-index: 100001!important;
 }

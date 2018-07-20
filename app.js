@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const bluebird = require('bluebird')
 const cors = require('cors')
+const upload = require('jquery-file-upload-middleware')
 const routes = require('./routes')
 const db = require('./connect-db')
 global.Promise = bluebird

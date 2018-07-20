@@ -7,7 +7,7 @@ module.exports = (app) => {
 
   app.use('/api', require('./api'))
   app.use('/admin', require('./admin'))
-  app.use('/board', require('./board'));
+  // app.use('/board', require('./board'));
   
   app.get('/', wrap(async function(req, res, next) {
     try {
