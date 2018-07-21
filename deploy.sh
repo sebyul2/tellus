@@ -1,0 +1,9 @@
+ssh -i ~/.ssh/20180718_tellus.pem ubuntu@ec2-13-125-105-53.ap-northeast-2.compute.amazonaws.com
+cd /data/tellus
+sudo su
+git checkout develop
+git pull origin develop
+git add .
+git commit -m "pull"
+npm install
+npm start
