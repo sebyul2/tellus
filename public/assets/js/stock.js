@@ -140,7 +140,7 @@ $(document).ready(function() {
           },
           {
             data: "day_getAmount",
-            title: "거래대금(백만)",
+            title: "거래대금",
             width: "15%"
           },
           {
