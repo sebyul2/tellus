@@ -504,6 +504,10 @@ table.dataTable a:hover {
 .popup-editor-body {
     font-size: 10pt;
     margin: 10px;
+}
+
+.popup-button, .popup-button:active {
+    border:0;
     background-color: #ffffff;
 }
 
@@ -528,4 +532,8 @@ table.dataTable a:hover {
 
 .ck-balloon-panel_visible {
     z-index: 100001!important;
+}
+
+.popup-button:hover {
+    cursor: pointer;
 }

@@ -17,10 +17,9 @@
   </div>
   <!-- Preloader end-->
 
-  <!-- Header-->
-  <header class="header header-transparent">
-  </header>
-  <!-- Header end-->
+  <!-- ●Header -->
+  <header class="header header-transparent"></header>
+  <!-- ●Header end -->
 
   <!-- Wrapper-->
   <div class="wrapper">
@@ -30,7 +29,7 @@
         <div class="row">
           <div class="col-md-12">
             <h1 class="m-b-20"><strong>Public notice</strong></h1>
-            <p class="m-b-40">게시판 관리<br></p>
+            <p class="m-b-40">텔루스 게시판 관리자 화면입니다.<br></p>
           </div>
         </div>
       </div>
@@ -50,16 +49,15 @@
   <div class="col-lg-12 col-md-12 m-auto text-center"></div>
   <!-- DataTable End -->
 
-  <!-- Footer-->
+  <!-- ●Footer-->
   <footer class="footer"></footer>
-  <!-- Footer end-->
+  <!-- ●Footer end-->
   </div>
   <!-- Wrapper end-->
 
-  <!-- Off canvas-->
-  <div class="off-canvas-sidebar">
-  </div>
-  <!-- Off canvas end-->
+  <!-- ●Slide Bar -->
+  <sidebar class="off-canvas-sidebar"></sidebar>
+  <!-- ●Slide Bar End -->
 
   <!-- To top button-->
   <a class="scroll-top" href="#top"><i class="fas fa-angle-up"></i></a>
@@ -77,7 +75,7 @@
       <input id="fileupload" type="file" name="file">
     </div>
     <div class="popup-editor-footer">
-      <button class="btn btn-secondary btn-sm" onclick="uploadRow();">완료</button>
+      <button class="btn btn-brand btn-sm" onclick="uploadRow();">완료</button>
       <button class="btn btn-secondary btn-sm" onclick="closePopup();">취소</button>
     </div>
   </div>
@@ -99,7 +97,7 @@
   <script>
     let dataSet = []
     let ckEditor
-    let table 
+    let table
 
     ClassicEditor
       .create(document.querySelector('#editor'), {
@@ -116,7 +114,7 @@
         const data = new FormData()
         data.append('file', document.getElementById('fileupload').files[0]);
         axios.put('/admin/upload', data).then(function(res) {
-          $('#distfile').html('<a href="javascript:insertLink();">' + res.data.filename + '</a>')
+          $('#distfile').html('<a href="javascript:insertLink();" target="_blank">' + res.data.filename + '</a>')
         })
       })
 
@@ -129,7 +127,7 @@
         // select: true,
         ajax: {
           url: '/admin/board',
-          dataSrc: function (json) {
+          dataSrc: function(json) {
             dataSet = json
             return json
           }
@@ -158,7 +156,7 @@
             title: "수정",
             width: "5%",
             fnCreatedCell: function(nTd, sData, oData, iRow, iCol) {
-              $(nTd).html("<button type='button' class='btn btn-secondary btn-xs' onclick='editRow(" + iRow + ")'>수정</button>")
+              $(nTd).html("<button type='button' class='btn btn-brand btn-xs' onclick='editRow(" + iRow + ")'>수정</button>")
             }
           },
           {
@@ -170,7 +168,7 @@
           }
         ],
       })
-      $('#datatable').after('<button type="button" id="create" class="btn btn-secondary btn-sm mt-1 float-left" onclick="createRow()">글쓰기</button>')
+      $('#datatable').after('<button type="button" id="create" class="btn btn-brand btn-sm mt-1 float-left" onclick="createRow()">글쓰기</button>')
       $('#my_popup').popup({
         escape: false,
         blur: false,
@@ -197,7 +195,9 @@
     }
 
     function deleteRow(index) {
-      axios.post('/admin/board/delete', { sequence: dataSet[index][0] }).then(function(res) {
+      axios.post('/admin/board/delete', {
+        sequence: dataSet[index][0]
+      }).then(function(res) {
         if (table) table.ajax.reload()
         // alert('삭제 완료')
       }).catch(function(err) {
@@ -227,7 +227,8 @@
       const filePath = 'uploads/' + fileName
       if (ckEditor) {
         ckEditor.model.change(writer => {
-          const insertPosition = ckEditor.model.document.selection.getFirstPosition();
+          const insertPosition = ckEditor.model.document.selection.getLastRange();
+          
           writer.insertText(fileName, {
             linkHref: filePath
           }, insertPosition)
