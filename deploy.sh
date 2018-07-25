@@ -6,5 +6,7 @@ git pull origin develop
 git add .
 git commit -m "pull"
 npm install
+npm run db
+npm run db-script
 npm start
 EOF
