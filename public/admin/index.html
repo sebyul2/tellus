@@ -114,7 +114,12 @@
         const data = new FormData()
         data.append('file', document.getElementById('fileupload').files[0]);
         axios.put('/admin/upload', data).then(function(res) {
-          $('#distfile').html('<a href="javascript:insertLink();" target="_blank">' + res.data.filename + '</a>')
+          if (ckEditor) {
+            const fileName = res.data.filename
+            const filePath = 'uploads/' + fileName
+            ckEditor.setData(ckEditor.getData() + '<a href="' + filePath + '" target="_blank">' + fileName)
+          }
+          // $('#distfile').html('<a href="javascript:insertLink();">' + res.data.filename + '</a>')
         })
       })
 
@@ -195,14 +200,18 @@
     }
 
     function deleteRow(index) {
-      axios.post('/admin/board/delete', {
-        sequence: dataSet[index][0]
-      }).then(function(res) {
-        if (table) table.ajax.reload()
-        // alert('삭제 완료')
-      }).catch(function(err) {
-        alert(err)
-      })
+      if (confirm("정말 삭제하시겠습니까??") == true) { //확인
+        axios.post('/admin/board/delete', {
+          sequence: dataSet[index][0]
+        }).then(function(res) {
+          if (table) table.ajax.reload()
+          // alert('삭제 완료')
+        }).catch(function(err) {
+          alert(err)
+        })
+      } else {
+        return;
+      }
     }
 
     function uploadRow() {
@@ -212,6 +221,12 @@
         // type: $('#checkbox').val(),
         content: ckEditor.getData()
       }
+
+      if (!data.title) {
+        alert('제목을 입력하세요')
+        return
+      }
+
       axios.post('/admin/board', data).then(function(res) {
         console.log(res.data)
         if (table) table.ajax.reload()
@@ -222,17 +237,17 @@
       })
     }
 
-    function insertLink() {
+    function insertLink(ckEditor) {
       const fileName = $('#distfile a').text()
       const filePath = 'uploads/' + fileName
       if (ckEditor) {
-        ckEditor.model.change(writer => {
-          const insertPosition = ckEditor.model.document.selection.getLastRange();
-          
-          writer.insertText(fileName, {
-            linkHref: filePath
-          }, insertPosition)
-        })
+        ckEditor.setData(ckEditor.getData() + '<a href="' + filePath + '" target="_blank">' + fileName)
+        //   ckEditor.model.change(writer => {
+        //     const insertPosition = ckEditor.model.document.selection.getLastRange()
+        //     writer.insertText(fileName, {
+        //       linkHref: filePath
+        //     }, insertPosition)
+        //   })
       }
     }
   </script>
