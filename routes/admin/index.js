@@ -16,8 +16,8 @@ const admin = express.Router()
 admin.get('/board', wrap(async (req, res) => {
   try {
     const r = await boardModel.find().sort({
-      sequence: -1,
-      type: -1
+      type: -1,
+      sequence: -1
     })
     const array = r.map(item => {
       const row = []
