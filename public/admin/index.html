@@ -141,8 +141,7 @@
             title: "번호",
             width: "10%",
             fnCreatedCell: function(nTd, sData, oData, iRow, iCol) {
-              if (oData[5] === 1) $(nTd).html("공지")
-              else $(nTd).html(sData)
+              $(nTd).html(sData)
             }
           },
           {

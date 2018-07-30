@@ -41,7 +41,7 @@ admin.post('/login', (req, res) => {
     const token = getToken(userId)
     res.cookie('x-access-token', token, {
       signed: false,
-      maxAge: 300000
+      maxAge: 3000000
     })
     console.log(token)
   }
@@ -118,12 +118,13 @@ admin.post('/board', wrap(async (req, res) => {
 admin.get('/board', wrap(async (req, res) => {
   try {
     const r = await boardModel.find().sort({
-      sequence: -1
+      sequence: -1,
+      type: -1
     })
     const array = r.map(item => {
       const row = []
       const date = new Date(item.created_at)
-      row.push(item.sequence)
+      row.push(item.type === 1 ? "공지" : item.sequence)
       row.push(item.title)
       row.push(item.user_name)
       row.push(moment(date).format('YY-MM-DD'))
@@ -131,6 +132,7 @@ admin.get('/board', wrap(async (req, res) => {
       row.push(item.type)
       return row
     })
+
     res.json(array)
   } catch (err) {
     throw new Error(err)
