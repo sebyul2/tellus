@@ -537,3 +537,9 @@ table.dataTable a:hover {
 .popup-button:hover {
     cursor: pointer;
 }
+
+.paginate_button.current{
+    color: #333 !important;
+    border: 1px solid none;
+    background-color: none;
+}
