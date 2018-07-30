@@ -112,12 +112,14 @@
 
       $("#fileupload").change(function() {
         const data = new FormData()
-        data.append('file', document.getElementById('fileupload').files[0]);
+        data.append('file', document.getElementById('fileupload').files[0])
+        
         axios.put('/admin/upload', data).then(function(res) {
           if (ckEditor) {
+            const originFileName = document.getElementById('fileupload').files[0].name
             const fileName = res.data.filename
             const filePath = 'uploads/' + fileName
-            ckEditor.setData(ckEditor.getData() + '<a href="' + filePath + '" target="_blank">' + fileName)
+            ckEditor.setData(ckEditor.getData() + '<a href="' + filePath + '" target="_blank">' + originFileName)
           }
           // $('#distfile').html('<a href="javascript:insertLink();">' + res.data.filename + '</a>')
         })

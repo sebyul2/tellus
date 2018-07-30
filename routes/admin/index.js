@@ -12,6 +12,31 @@ const util = require('../../common/util')
 const boardModel = require('../../model/board-model')
 const admin = express.Router()
 
+// 게시물 가져오기
+admin.get('/board', wrap(async (req, res) => {
+  try {
+    const r = await boardModel.find().sort({
+      sequence: -1,
+      type: -1
+    })
+    const array = r.map(item => {
+      const row = []
+      const date = new Date(item.created_at)
+      row.push(item.type === 1 ? "공지" : item.sequence)
+      row.push(item.title)
+      row.push(item.user_name)
+      row.push(moment(date).format('YY-MM-DD'))
+      row.push(item.text)
+      row.push(item.type)
+      return row
+    })
+    console.log(array)
+    res.json(array)
+  } catch (err) {
+    throw new Error(err)
+  }
+}))
+
 admin.use(auth)
 
 const publicDir = path.resolve(__dirname, '../../public')
@@ -22,7 +47,9 @@ const upload = multer({
     filename: (req, file, cb) => cb(null, new Date().valueOf() + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
   })
 })
+
 admin.put('/upload', upload.single('file'), (req, res) => {
+  console.log(req.file)
   res.json(req.file)
 })
 
@@ -112,31 +139,6 @@ admin.post('/board', wrap(async (req, res) => {
   res.json({
     success: true
   })
-}))
-
-// 게시물 가져오기
-admin.get('/board', wrap(async (req, res) => {
-  try {
-    const r = await boardModel.find().sort({
-      sequence: -1,
-      type: -1
-    })
-    const array = r.map(item => {
-      const row = []
-      const date = new Date(item.created_at)
-      row.push(item.type === 1 ? "공지" : item.sequence)
-      row.push(item.title)
-      row.push(item.user_name)
-      row.push(moment(date).format('YY-MM-DD'))
-      row.push(item.text)
-      row.push(item.type)
-      return row
-    })
-
-    res.json(array)
-  } catch (err) {
-    throw new Error(err)
-  }
 }))
 
 // 게시물 삭제
