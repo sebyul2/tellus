@@ -7,5 +7,5 @@ git add .
 git commit -m "pull"
 npm install
 npm run db-script
-npm start
+npm run server-start
 EOF
