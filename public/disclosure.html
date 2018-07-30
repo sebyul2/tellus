@@ -86,6 +86,11 @@
                 },
                 ordering: false,
                 searching: false,
+                // initComplete : 테이블 렌더링이 완료되면 아래의 코드를 실행
+                initComplete: function() {
+                    // .paginate_button.current 을 찾아서 current 클래스를 지워줌
+                    $('.paginate_button.current').removeClass('current')
+                },
                 columns: [{
                         title: "시간",
                         width: "15%"
