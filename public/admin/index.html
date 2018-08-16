@@ -67,10 +67,10 @@
     </div>
     <div class="popup-editor-header">
 
-        <select name="cars">
-            <option value=1>공지</option>
-            <option value=0>일반</option>
-          </select>
+      <select id="type" name="type">
+        <option value=0>일반</option>
+        <option value=1>공지</option>
+      </select>
 
       <input id="title" name="title" type="text" class="popup-editor-title"></input>
       <!-- <input id="checkbox" name="checkbox" type="checkbox" class="form-check-input" value=""> -->
@@ -225,7 +225,7 @@
       const data = {
         rowId: $('#rowId').val(),
         title: $('#title').val(),
-        // type: $('#checkbox').val(),
+        type: $('#type').val(),
         content: ckEditor.getData()
       }
 

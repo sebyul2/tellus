@@ -123,6 +123,7 @@ admin.post('/board', wrap(async (req, res) => {
   const data = {
     user_id: userId,
     user_name: name,
+    type: req.body.type,
     title: req.body.title,
     text: req.body.content
   }
