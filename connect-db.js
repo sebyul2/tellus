@@ -22,7 +22,8 @@ mongoose.plugin((schema) => {
 module.exports.connect = async () => {
   try {
     await mongoose.connect(config.db.host, config.db.options)
-    console.log('mongo server connect success!')
+    console.log(config.db.host);
+    console.log(config.db.options);
   } catch (err) {
     throw err
   }
