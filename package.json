@@ -6,7 +6,7 @@
     "start": "node app.js",
     "server-start": "npm run build; pm2 kill; pm2 start app.js; pm2 log",
     "build": "npm run db && node script",
-    "db": "docker run -d --name mongodb-tellus -p 27017:27017 -e MONGODB_USERNAME=admin -e MONGODB_PASSWORD=password -e MONGODB_DBNAME=tellus -v /data/db:/data/db mongo:latest",
+    "db": "docker rm $(docker ps -a -q) && docker run -d --name mongodb-tellus -p 27017:27017 -e MONGODB_USERNAME=admin -e MONGODB_PASSWORD=password -e MONGODB_DBNAME=tellus -v /data/db:/data/db mongo:latest",
     "db-script": "node script"
   },
   "description": "ExpressApp2",
